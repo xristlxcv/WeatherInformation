@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <title>Weather info</title>
+</head>
+
+<body>
+    <div id="first">
+        <h1>Weather Info</h1>
+        <form id="searchCity">
+            <input type="text" name="city" id="city" value="">
+            <button>Get Weather</button>
+        </form>
+    </div>
+    <div id="second">
+        <h1>Informations</h1>
+        <h2 id="name">
+            </h1>
+            <h4 id="info1"></h4>
+            <h4 id="info2"></h4>
+            <h4 id="info3"></h4>
+            <h4 id="info4"></h4>
+    </div>
+    <div id="third">
+        <img id="photo1" src="" style="width:104px;height:142px;">
+        <img id="photo2" src="" style="width:104px;height:142px;">
+        <img id="photo3" src="" style="width:104px;height:142px;">
+        <img id="photo4" src="" style="width:104px;height:142px;">
+    </div>
+    <script>
+        const getImage = async () => {
+            const res = await fetch("/getweather");
+            const image = await res.json();
+            console.log(image);
+            document.getElementById("photo1").src = image.image1;
+            document.getElementById("photo2").src = image.image2;
+            document.getElementById("photo3").src = image.image3;
+            document.getElementById("photo4").src = image.image4;
+        }
+        const myform = document.getElementById("searchCity")
+        myform.addEventListener("submit", (e) => {
+            e.preventDefault();
+            var city = document.getElementById("city").value;
+            const getW = async () => {
+                const res = await fetch(`/api/${city}`);
+                const cities = await res.json();
+                let description = cities.weather[0].description;
+                let name = cities.name;
+                let main = cities.weather[0].main;
+                let temperature = cities.main.temp;
+                let humidity = cities.main.humidity;
+                document.getElementById("name").innerHTML = name;
+                document.getElementById("info1").innerHTML = main;
+                document.getElementById("info2").innerHTML = description;
+                document.getElementById("info3").innerHTML = temperature;
+                document.getElementById("info4").innerHTML = humidity;
+                console.log(description, name, main, temperature, humidity);
+            }
+            getW();
+        })
+        getImage();
+    </script>
+</body>
+
+</html>

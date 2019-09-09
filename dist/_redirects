@@ -1,0 +1,2 @@
+/api/*  https://api.openweathermap.org/data/2.5/weather?q=:splat&APPID=81379cbddb2ae941302d0a595ceac822 
+/getweather /.netlify/functions/getWeather/getWeather.js

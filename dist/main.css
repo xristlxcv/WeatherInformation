@@ -1,0 +1,34 @@
+#second{
+    width:500px;
+    height: 300px;
+    border-radius: 20px;
+    background-color: blueviolet;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 5);
+    padding: 2%;
+    margin:2%;
+    color: rgb(0, 0, 0);
+}
+#first{
+    width:500px;
+    height: 200px;
+    border-radius: 20px;
+    background-color: rgb(248, 0, 186);
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 5);
+    padding: 2%;
+    margin: 2%;
+    
+}
+#third{
+    display: flex;
+    width:500px;
+    height: 200px;
+    right: 0;
+    position: relative;
+    top: 0;
+    border-radius: 20px;
+    background-color: rgb(15, 62, 73);
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 5);
+    padding: 2%;
+    margin: 2%;
+}
+
