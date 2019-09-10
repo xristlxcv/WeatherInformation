@@ -17,3 +17,7 @@ Weather Info site with netlify using serveless functions,forms,auth,identity,ext
 # Send a message
 
 ![forth](https://i.ibb.co/HtxcydD/4.png)
+
+# Problems
+if you put a city and nothing appears then you get this:
+![](https://ibb.co/Jm03XgQ)
