@@ -6,33 +6,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="main.css">
+    <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <title>Weather info</title>
 </head>
 
 <body>
-    <div id="first">
-        <h1>Weather Info</h1>
-        <form id="searchCity">
-            <input type="text" name="city" id="city" value="">
-            <button>Get Weather</button>
-        </form>
+    <div id="regMenu">
+        <div data-netlify-identity-menu></div>
+        <div data-netlify-identity-button>Login with Netlify Identity</div>
     </div>
-    <div id="second">
-        <h1>Informations</h1>
-        <h2 id="name">
-            </h1>
-            <h4 id="info1"></h4>
-            <h4 id="info2"></h4>
-            <h4 id="info3"></h4>
-            <h4 id="info4"></h4>
-    </div>
-    <div id="third">
-        <img id="photo1" src="" style="width:104px;height:142px;">
-        <img id="photo2" src="" style="width:104px;height:142px;">
-        <img id="photo3" src="" style="width:104px;height:142px;">
-        <img id="photo4" src="" style="width:104px;height:142px;">
+    <div id="show">
+        <div id="first">
+            <h1>Weather Info</h1>
+            <form id="searchCity">
+                <input type="text" name="city" id="city" value="">
+                <button>Get Weather</button>
+            </form>
+        </div>
+        <div id="second">
+            <h1>Informations</h1>
+            <h2 id="name">
+                </h1>
+                <h4 id="info1"></h4>
+                <h4 id="info2"></h4>
+                <h4 id="info3"></h4>
+                <h4 id="info4"></h4>
+        </div>
+        <div id="third">
+            <img id="photo1" src="" style="width:104px;height:142px;">
+            <img id="photo2" src="" style="width:104px;height:142px;">
+            <img id="photo3" src="" style="width:104px;height:142px;">
+            <img id="photo4" src="" style="width:104px;height:142px;">
+        </div>
+        <div id="form_contact">
+            <form name="contact" method="POST" data-netlify-recaptcha="true" data-netlify="true">
+                <p>
+                    <label>Your Name:
+                        <input type="text" name="name" />
+                    </label>
+                </p>
+                <p>
+                    <label>Your Email:
+                        <input type="email" name="email" />
+                    </label>
+                </p>
+
+                <p>
+                    <label>Message:
+                        <textarea name="message"></textarea>
+                    </label>
+                </p>
+                <div data-netlify-recaptcha="true"></div>
+                <p>
+                    <button type="submit">Send</button>
+                </p>
+            </form>
+
+
+        </div>
     </div>
     <script>
+        var x = document.getElementById("show");
+        netlifyIdentity.open();
+        const user = netlifyIdentity.currentUser();
+        netlifyIdentity.on('init', user => console.log('init', user));
+        netlifyIdentity.on('login', () =>
+            x.style.display = "block");
+        netlifyIdentity.on('logout', () => console.log('Logged out'));
+        netlifyIdentity.on('error', err => console.error('Error', err));
+        netlifyIdentity.on('open', () => console.log('Widget opened'));
+        netlifyIdentity.on('close', () => x.style.display = "none");
+
+        // Close the modal
+        netlifyIdentity.close();
+
+        // Log out the user
+        netlifyIdentity.logout();
         const getImage = async () => {
             const res = await fetch("/getweather");
             const image = await res.json();
