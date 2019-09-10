@@ -19,5 +19,7 @@ Weather Info site with netlify using serveless functions,forms,auth,identity,ext
 ![forth](https://i.ibb.co/HtxcydD/4.png)
 
 # Problems
-if you put a city and nothing appears then you get this:
-![problem](https://ibb.co/Jm03XgQ)
+When you put a city and nothing appears then you notice that you get this:
+![problem](https://i.ibb.co/CmNPxD2/image.png)
+To show the information you should click "Load unsafe scripts"
+![problem1](https://i.ibb.co/xFfHtbt/image.png)
