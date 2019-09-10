@@ -20,4 +20,4 @@ Weather Info site with netlify using serveless functions,forms,auth,identity,ext
 
 # Problems
 if you put a city and nothing appears then you get this:
-![](https://ibb.co/Jm03XgQ)
+![problem](https://ibb.co/Jm03XgQ)
